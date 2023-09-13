@@ -24,7 +24,7 @@ export default function Navbar() {
 	
 	return (
 		<div>
-			<nav className="flex w-screen h-20 py-3 px-10 border-b border-gray-700 justify-between">
+			<nav className="flex w-screen h-1/5 py-3 px-10 border-b border-gray-700 justify-between">
 				<div>
 					<FaPiedPiperAlt className={`text-white h-10 w-10`} />
 				</div>
