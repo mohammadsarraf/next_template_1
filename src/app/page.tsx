@@ -11,7 +11,7 @@ export default function Home() {
 			<Navbar />
 			<main className="flex flex-grow">
 				<Menu />
-				<Main />
+				<Main name={``} />
 				<Info />
 			</main>
 			<footer className="">

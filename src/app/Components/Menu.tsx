@@ -5,7 +5,7 @@ export default function Menu() {
     const [isThemeDropdownOpen, setIsThemeDropdownOpen] = useState(false);
     const [selectedTheme, setSelectedTheme] = useState("light"); // Default theme
 
-    const handleButtonClick = (buttonName) => {
+    const handleButtonClick = (buttonName: any) => {
         setSelectedButton(buttonName);
     };
 
@@ -13,7 +13,7 @@ export default function Menu() {
         setIsThemeDropdownOpen(!isThemeDropdownOpen);
     };
 
-    const handleThemeChange = (theme) => {
+    const handleThemeChange = (theme: any) => {
         setSelectedTheme(theme);
         toggleThemeDropdown();
     };
