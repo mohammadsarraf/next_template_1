@@ -14,8 +14,8 @@ export default function Home() {
 				<Main />
 				<Info />
 			</main>
-			<footer className="py-4">
-				<p className="text-white">Lilglu4e Productions</p>
+			<footer className="">
+				<p className="text-white p-4">Lilglu4e Productions</p>
 			</footer>
 		</div>
 	)
