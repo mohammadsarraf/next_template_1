@@ -21,7 +21,7 @@ export default function Navbar() {
 			window.removeEventListener('keydown', handleKeyPress);
 		};
 	}, []);
-	
+
 	return (
 		<div>
 			<nav className="flex w-screen h-1/5 py-3 px-10 border-b border-gray-700 justify-between">
@@ -35,7 +35,7 @@ export default function Navbar() {
 						<input
 							ref={searchInputRef}
 							type="text"
-							className="bg-blue-100 bg-opacity-10 h-10 px-5 pr-10 rounded-md text-sm focus:outline-none w-64 text-white"
+							className="bg-gray-100 bg-opacity-10 h-10 px-5 pr-10 rounded-md text-sm focus:outline-none w-64 text-white"
 							placeholder="Search documentation..."
 						/>
 						<span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 text-xs">CNTL K</span>
