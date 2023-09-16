@@ -26,6 +26,17 @@
     @apply border-2 border-black border-b-gray-500; 
     @apply py-5
   }
+
+  .line{
+    @apply border-t border-transparent block w-full h-0 my-4 text-xs px-3
+
+  }
+
+
+
+
+  
+
 }
 
 @tailwind components;
@@ -42,3 +53,12 @@ body {
   transition: color 0.3s ease-in-out;
 }
 
+.codeEditor:hover button {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.codeEditor button {
+  opacity: 0;
+  transition: opacity 0.2s;
+}

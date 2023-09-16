@@ -1,4 +1,5 @@
 import React from "react";
+import CodeEditor from "./CodeEditor";
 
 interface MainProps {
   name: string; // Specify the type of the 'name' prop
@@ -49,6 +50,8 @@ export default function Main({ name }: MainProps) {
             </svg>
         </a>
     </div>
+    <CodeEditor/> 
+
 
     </div>
   );
