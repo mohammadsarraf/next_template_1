@@ -45,3 +45,52 @@ body {
     color: var(--hover-color, #3b82f6);
     transition: color 0.3s ease-in-out;
 }
+
+
+/* styles.css */
+
+/* Customize the vertical scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+    /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Color of the scrollbar thumb */
+    border-radius: 6px;
+    /* Rounded corners of the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Color of the thumb on hover */
+}
+
+/* Customize the horizontal scrollbar */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Color of the scrollbar track */
+}
+
+::-webkit-scrollbar-track-piece {
+    background: #000000;
+    /* Color of the scrollbar track piece */
+}
+
+/* Customize the horizontal scrollbar thumb */
+::-webkit-scrollbar-thumb:horizontal {
+    background: #888;
+    /* Color of the scrollbar thumb */
+}
+
+/* Customize the horizontal scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:horizontal:hover {
+    background: #555;
+    /* Color of the thumb on hover */
+}
+
+/* Hide the scrollbar buttons (arrows) */
+::-webkit-scrollbar-button {
+    display: none;
+}
