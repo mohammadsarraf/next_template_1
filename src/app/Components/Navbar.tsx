@@ -3,7 +3,6 @@ import { FaPiedPiperAlt, FaGithub, FaDiscord, FaSearch } from 'react-icons/fa'
 
 export default function Navbar() {
   const searchInputRef = useRef<HTMLInputElement | null>(null);
-
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.key === 'k') {

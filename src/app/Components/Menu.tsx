@@ -42,7 +42,7 @@ export default function Menu() {
   const themeButtonRef = useRef<HTMLButtonElement | null>(null);
 
   return (
-    <div className="flex flex-col w-80 px-10 py-3 relative">
+    <div className="flex flex-col w-80 px-10 py-3 relative overflow-y-scroll">
       <div className="flex flex-col flex-grow border-b border-gray-500 overflow-auto">
         {buttons.map((button) => (
           <button

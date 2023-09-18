@@ -6,6 +6,7 @@ import { BsClipboard } from "react-icons/bs";
 
 export default function CodeEditor() {
     const copyText = () => {
+        
         const codeElement = document.getElementById("code");
         if (codeElement) {
             const range = document.createRange();
