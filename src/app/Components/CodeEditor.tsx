@@ -38,10 +38,14 @@ export default function CodeEditor() {
   return (
     <div className="border-black bg-[#1e1e1e] rounded-lg m-5 pb-8">
       <div className="flex bg-[#1e1e1e] rounded-t-md text-xs w-full outline-none pt-1 justify-between">
-        <p className="text-blue-500 border-b-2 border-r border-b-blue-500 border-r-blue-500 outline-none m-0 p-2">
+        <p className="text-blue-500 border-b-2 border-b-blue-500 border-r-blue-500 outline-none m-0 p-2">
           demo.js
         </p>
-        <p className="flex-grow border-t border-t-blue-500 bg-[#3e3e3e89]"></p>
+        <div className="flex flex-row-reverse rounded-sm flex-grow border-t border-t-[#3e3e3e] border-l border-l-[#3e3e3e] bg-[#3e3e3e89]">
+          <button onClick={copyText} className="mr-4">
+            <BsClipboard />
+          </button>
+        </div>
       </div>
 
       <div className="codeEditor flex justify-between border-t border-t-[#3e3e3e]">
@@ -54,9 +58,6 @@ export default function CodeEditor() {
         >
           {`import React from "react";\nconsole.log('hello world');\nexport default function CodeEditor();`}
         </SyntaxHighlighter>
-        <button onClick={copyText} className="mr-4">
-          <BsClipboard />
-        </button>
       </div>
     </div>
   );
