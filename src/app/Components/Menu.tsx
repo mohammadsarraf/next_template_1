@@ -11,24 +11,24 @@ const buttons: Button[] = [
     Topic: "Getting Started",
     key: "Introduction",
     Children: [
-      { key: "1", value: 'Installation' },
-      { key: "2", value: 'Editor Setup' },
-      { key: "3", value: 'Using with Preprocessors' },
-      { key: "4", value: 'Optimizing for Production' },
-      { key: "5", value: 'Browser Support' },
-      { key: "6", value: 'Upgrade Guide' },
+      { key: "1", value: "Installation" },
+      { key: "2", value: "Editor Setup" },
+      { key: "3", value: "Using with Preprocessors" },
+      { key: "4", value: "Optimizing for Production" },
+      { key: "5", value: "Browser Support" },
+      { key: "6", value: "Upgrade Guide" },
     ],
   },
   {
     Topic: "Core Concepts",
     key: "Core Concepts",
     Children: [
-      { key: "1", value: 'Utility-First Fundamentals' },
-      { key: "2", value: 'Handling Hover, Focus, and Other States' },
-      { key: "3", value: 'Responsive Design' },
-      { key: "4", value: 'Dark Mode' },
-      { key: "5", value: 'Adding Custom Styles' },
-      { key: "6", value: 'Functions & Directives' },
+      { key: "1", value: "Utility-First Fundamentals" },
+      { key: "2", value: "Handling Hover, Focus, and Other States" },
+      { key: "3", value: "Responsive Design" },
+      { key: "4", value: "Dark Mode" },
+      { key: "5", value: "Adding Custom Styles" },
+      { key: "6", value: "Functions & Directives" },
     ],
   },
 ];
@@ -65,7 +65,8 @@ export default function Menu() {
           placeholder="Search documentation..."
         />
         <span className="absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-400 text-xs">
-          {/* <FaSearch className="text-lg" /> */}{`CNTL K`}
+          {/* <FaSearch className="text-lg" /> */}
+          {`CNTL K`}
         </span>
       </div>
       <div className="flex flex-col flex-grow border-gray-500 max-h-full overflow-y-auto">
@@ -76,15 +77,17 @@ export default function Menu() {
               {button.Children.map((child) => (
                 <button
                   key={child.key}
-                  className={`text-xs text-bold whitespace-nowrap text-left p-2 pl-4 border-l rounded-e-md hover:bg-blue-100 hover:bg-opacity-10 ${selectedButton === button.key && selectedChild === child.key
-                    ? "text-blue-600 border-l-blue-600"
-                    : "text-gray-300"
-                    }`}
+                  className={`text-xs text-bold whitespace-nowrap text-left p-2 pl-4 border-l rounded-e-md hover:border-l-gray-600 ${
+                    selectedButton === button.key && selectedChild === child.key
+                      ? "text-blue-600 border-l-blue-600"
+                      : "text-gray-300"
+                  }`}
                   onClick={() => handleButtonClick(button.key, child.key)}
                 >
                   {child.value}
                 </button>
-              ))}</div>
+              ))}
+            </div>
           </div>
         ))}
       </div>
@@ -92,9 +95,8 @@ export default function Menu() {
   );
 }
 
-
-
-{/* <div className="flex flex-col relative">
+{
+  /* <div className="flex flex-col relative">
         <button
           ref={themeButtonRef}
           className={`text-white text-opacity-50 bg-gray-400 bg-opacity-10 text-sm text-bold text-left p-2 my-1 mt-2 rounded-md bg-transparent hover:text-white`}
@@ -120,4 +122,5 @@ export default function Menu() {
             </ul>
           </div>
         )}
-      </div> */}
+      </div> */
+}
