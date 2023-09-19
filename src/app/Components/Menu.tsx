@@ -1,4 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { FaPencilAlt } from "react-icons/fa"; // Import the Pencil icon
 
 interface Button {
   Topic: string;
@@ -6,7 +8,7 @@ interface Button {
   key: string;
 }
 
-const buttons: Button[] = [
+const initialButtons: Button[] = [
   {
     Topic: "Getting Started",
     key: "Introduction",
@@ -34,14 +36,17 @@ const buttons: Button[] = [
 ];
 
 export default function Menu() {
+  const [buttons, setButtons] = useState<Button[]>(initialButtons);
   const [selectedButton, setSelectedButton] = useState<string | null>(null);
   const [selectedChild, setSelectedChild] = useState<string | null>(null);
   const [isThemeDropdownOpen, setIsThemeDropdownOpen] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState("light");
+  const [isEditing, setIsEditing] = useState(false);
+  const [changesMade, setChangesMade] = useState(false);
 
-  const handleButtonClick = (buttonName: string, childKey: string) => {
+  const handleButtonClick = (buttonName: string, childKey: string | null) => {
     setSelectedButton(buttonName);
-    setSelectedChild(childKey); // Set the selected child for the button
+    setSelectedChild(childKey);
   };
 
   const toggleThemeDropdown = () => {
@@ -53,74 +58,115 @@ export default function Menu() {
     toggleThemeDropdown();
   };
 
-  const themeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const toggleEditing = () => {
+    setIsEditing(!isEditing);
+    setChangesMade(false);
+  };
+
+  const onDragEnd = (result: any) => {
+    if (!result.destination) {
+      return;
+    }
+
+    const { source, destination } = result;
+    const updatedButtons = [...buttons];
+
+    if (source.droppableId === "buttons" && destination.droppableId === "buttons") {
+      const sourceButtonIndex = source.index;
+      const destButtonIndex = destination.index;
+
+      const [movedButton] = updatedButtons.splice(sourceButtonIndex, 1);
+      updatedButtons.splice(destButtonIndex, 0, movedButton);
+      setChangesMade(true);
+    }
+
+    setButtons(updatedButtons);
+  };
+
+  const handleDoneClick = () => {
+    setChangesMade(false);
+    setIsEditing(false);
+  };
 
   return (
     <div className="flex flex-col flex-1 px-10 py-3 relative h-full">
       <div className="relative my-8">
         <input
-          // ref={searchInputRef}
           type="text"
           className="bg-gray-800 text-white placeholder-gray-400 h-10 px-4 py-2 pr-10 rounded-md text-sm focus:outline-none w-64"
           placeholder="Search documentation..."
         />
         <span className="absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-400 text-xs">
-          {/* <FaSearch className="text-lg" /> */}
           {`CNTL K`}
         </span>
       </div>
-      <div className="flex flex-col flex-grow border-gray-500 max-h-full overflow-y-auto">
-        {buttons.map((button) => (
-          <div className={`flex flex-col my-3`} key={button.key}>
-            <p className="text-white text-xs font-bold">{button.Topic}</p>
-            <div className="flex flex-col my-2">
-              {button.Children.map((child) => (
-                <button
-                  key={child.key}
-                  className={`text-xs text-bold whitespace-nowrap text-left p-2 pl-4 border-l rounded-e-md hover:border-l-gray-600 ${
-                    selectedButton === button.key && selectedChild === child.key
-                      ? "text-blue-600 border-l-blue-600"
-                      : "text-gray-300"
-                  }`}
-                  onClick={() => handleButtonClick(button.key, child.key)}
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="buttons" isDropDisabled={!isEditing}>
+          {(provided) => (
+            <div ref={provided.innerRef} {...provided.droppableProps}>
+              {buttons.map((button, index) => (
+                <Draggable
+                  key={button.key}
+                  draggableId={button.key}
+                  index={index}
+                  isDragDisabled={!isEditing}
                 >
-                  {child.value}
-                </button>
+                  {(provided, snapshot) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      className={`flex flex-col my-3 ${snapshot.isDragging ? "opacity-50" : ""}`}
+                    >
+                      <div className="flex items-center">
+                        <div
+                          {...provided.dragHandleProps}
+                          className={`text-blue-600 cursor-pointer ${isEditing ? "" : "hidden"}`}
+                        >
+                          <FaPencilAlt /> {/* Use the Pencil icon */}
+                        </div>
+                        <p
+                          className={`text-white text-xs font-bold ml-2 ${selectedButton === button.key ? "text-blue-600" : ""}`}
+                          onClick={() => handleButtonClick(button.key, null)}
+                        >
+                          {button.Topic}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-col my-2">
+                        {button.Children.map((child) => (
+                          <button
+                            key={child.key}
+                            className={`text-xs text-bold whitespace-nowrap text-left p-2 pl-4 border-l rounded-e-md hover:border-l-gray-600 ${selectedButton === button.key && selectedChild === child.key ? "text-blue-600 border-l-blue-600" : "text-gray-300"}`}
+                            onClick={() => handleButtonClick(button.key, child.key)}
+                          >
+                            {child.value}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </Draggable>
               ))}
+              {provided.placeholder}
             </div>
-          </div>
-        ))}
-      </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+      {isEditing ? (
+        <button
+          className={`bg-green-600 text-white px-2 py-1 rounded-md mt-4`}
+          onClick={handleDoneClick}
+        >
+          Done
+        </button>
+      ) : (
+        <button
+          className={`bg-blue-600 text-white px-2 py-1 rounded-md mt-4 ${isEditing ? "hidden" : ""}`}
+          onClick={toggleEditing}
+        >
+          Edit
+        </button>
+      )}
     </div>
   );
-}
-
-{
-  /* <div className="flex flex-col relative">
-        <button
-          ref={themeButtonRef}
-          className={`text-white text-opacity-50 bg-gray-400 bg-opacity-10 text-sm text-bold text-left p-2 my-1 mt-2 rounded-md bg-transparent hover:text-white`}
-          onClick={toggleThemeDropdown}
-        >
-          Dark
-        </button>
-        {isThemeDropdownOpen && (
-          <div className="flex flex-col-reverse absolute bottom-9 mb-1 w-64">
-            <ul className={`text-md text-bold text-left p-2 mb-1 rounded-md bg-[#141414]`}>
-              <li
-                className={`text-md text-white text-bold text-left p-2 mb-1 rounded-md hover:bg-gray-700 hover:bg-opacity-10`}
-                onClick={() => handleThemeChange("light")}
-              >
-                Light
-              </li>
-              <li
-                className={`text-md text-white text-bold text-left p-2 mb-1 rounded-md hover:bg-gray-700 hover:bg-opacity-10`}
-                onClick={() => handleThemeChange("dark")}
-              >
-                Dark
-              </li>
-            </ul>
-          </div>
-        )}
-      </div> */
 }
