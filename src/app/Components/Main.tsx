@@ -13,7 +13,7 @@ export default function Main() {
   };
 
   return (
-    <div className="text-white flex-grow px-10 py-3 overflow-y-scroll">
+    <div className="text-white flex-grow px-10 py-3 max-h-full overflow-y-auto ">
       <h1 id="introduction" className="mx-8 mt-8 font-sans text-white transition-colors duration-300 ease-in-out group-hover:text-blue-500">
         Introduction
       </h1>
@@ -28,9 +28,11 @@ export default function Main() {
         <p className="mt-6 mx-8">
           A simple, powerful, and flexible site generation framework with everything you love from Next.js
         </p>
+        <div className="px-10 py-3">
+          <CodeEditor />
+        </div>
       </div>
-
-      <div id="documentation" className="group">
+      {/* <div id="documentation" className="group">
         <h1 className="mt-6 mx-8 bold">
           Documentation
         </h1>
@@ -49,7 +51,7 @@ export default function Main() {
       <div className="flex justify-end items-center mt-8 hover:cursor-pointer">
         <span className="text-sm font-bold text-gray-300">Another Page</span>
         <BsArrowRight className={`text-white ml-3`} />
-      </div>
+      </div> */}
     </div>
   );
 }
