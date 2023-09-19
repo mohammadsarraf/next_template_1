@@ -1,7 +1,7 @@
 // CodeEditor.js
 import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { dracula, vscDarkPlus  } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { BsClipboard } from "react-icons/bs";
 
 export default function CodeEditor() {
@@ -34,7 +34,7 @@ export default function CodeEditor() {
     };
 
     return (
-        <div className="border-black bg-[#282a36] rounded-lg m-5 pb-8">
+        <div className="border-black bg-[#1e1e1e] rounded-lg m-5 pb-8">
             <div className="bg-gray-600 rounded-t-lg text-xs w-full my-2 py-3">
                 <p className="text-white px-2">demo.js</p>
             </div>
@@ -43,7 +43,7 @@ export default function CodeEditor() {
                 <SyntaxHighlighter
                     id="code"
                     language="javascript"
-                    style={dracula}
+                    style={vscDarkPlus }
                     customStyle={{ fontSize: "0.875em" }}
                     showInlineLineNumbers={true}
                 >
