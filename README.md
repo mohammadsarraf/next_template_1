@@ -3,11 +3,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 First install these packages:
+```
 . npm install react-beautiful-dnd
 . npm install react-icons    
 . npm install firebase     
 . npm install react-syntax-highlighter
-
+```
 then, run the development server:
 
 ```bash
