@@ -121,7 +121,7 @@ export default function Menu() {
 	};
 
 	return (
-		<div className="flex flex-col flex-1 px-10 py-3 relative h-full">
+		<div className="flex flex-col px-10 py-3 relative h-full">
 			<div className="relative my-8">
 				<input
 					ref={searchInputRef}
