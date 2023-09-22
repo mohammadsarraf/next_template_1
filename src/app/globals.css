@@ -7,9 +7,29 @@
 
 @layer base {
     h1 {
-        @apply text-white;
+        @apply text-3xl;
+        @apply font-bold;
+
+
     }
 
+    h2 {
+        @apply text-xl;
+        @apply font-bold
+    }
+
+    h3 {
+        @apply text-lg;
+    }
+
+    a {
+        @apply text-blue-600 underline;
+    }
+
+    .group h1 {
+        @apply border-2 border-black border-b-gray-500;
+        @apply py-5
+    }
 }
 
 @tailwind components;
@@ -21,7 +41,10 @@ body {
     background-color: black;
 }
 
-
+.group:hover h1 {
+    color: var(--hover-color, #3b82f6);
+    transition: color 0.3s ease-in-out;
+}
 
 
 /* styles.css */

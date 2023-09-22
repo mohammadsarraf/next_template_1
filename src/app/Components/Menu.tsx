@@ -3,14 +3,66 @@ import React, { useState, useEffect, useRef } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { RxHamburgerMenu } from 'react-icons/rx'
 
-interface MenuProps {
-  buttons: any; // Change the type if needed
-  selectedChildCallback: (childKey: string | null) => void; // Callback function
+interface Button {
+  Topic: string;
+  Children: { key: string; value: string }[];
+  key: string;
+}
+
+const initialButtons: Button[] = [
+  {
+    Topic: "Getting Started",
+    key: "Introduction",
+    Children: [
+      { key: "1", value: "Installation" },
+      { key: "2", value: "Editor Setup" },
+      { key: "3", value: "Using with Preprocessors" },
+      { key: "4", value: "Optimizing for Production" },
+      { key: "5", value: "Browser Support" },
+      { key: "6", value: "Upgrade Guide" },
+    ],
+  },
+  {
+    Topic: "Core Concepts",
+    key: "Core Concepts",
+    Children: [
+      { key: "1", value: "Utility-First Fundamentals" },
+      { key: "2", value: "Handling Hover, Focus, and Other States" },
+      { key: "3", value: "Responsive Design" },
+      { key: "4", value: "Dark Mode" },
+      { key: "5", value: "Adding Custom Styles" },
+      { key: "6", value: "Functions & Directives" },
+    ],
+  },
+  {
+    Topic: "Customization",
+    key: "Customization",
+    Children: [
+      { key: "1", value: "Configuration" },
+      { key: "2", value: "Content" },
+      { key: "3", value: "Theme" },
+      { key: "4", value: "Screens" },
+      { key: "5", value: "Colors" },
+      { key: "6", value: "Spacing" },
+      { key: "7", value: "Plugins" },
+      { key: "8", value: "Presets" },
+    ],
+  },
+];
+
+interface Props {
+  params: {
+    buttons: any[];
+    selectedChildCallback: any;
+    selectedButton: string | null; // Add the selectedButton prop
+  };
 }
 
 export default function Menu(props: any) {
-  const [buttons, setButtons] = useState(props.buttons);
-  const [selectedButton, setSelectedButton] = useState<string | null>(null);
+  const { buttons: modifiedTopics, selectedChildCallback, selectedButton: parentSelectedButton } = props;
+
+  const [buttons, setButtons] = useState<Button[]>(initialButtons);
+  const [selectedButton, setSelectedButton] = useState<string | null>(parentSelectedButton);
   const [selectedChild, setSelectedChild] = useState<string | null>(null);
   const [isThemeDropdownOpen, setIsThemeDropdownOpen] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState("light");
@@ -34,15 +86,10 @@ export default function Menu(props: any) {
       window.removeEventListener('keydown', handleKeyPress);
     };
   }, []);
-
   const handleButtonClick = (buttonName: string, childKey: string | null) => {
     setSelectedButton(buttonName);
     setSelectedChild(childKey);
-
-    // Pass the selected child to the callback function
-    props.selectedChildCallback(buttonName);
   };
-
 
   const toggleThemeDropdown = () => {
     setIsThemeDropdownOpen(!isThemeDropdownOpen);
@@ -100,7 +147,7 @@ export default function Menu(props: any) {
         <Droppable droppableId="buttons" isDropDisabled={!isEditing}>
           {(provided) => (
             <div className={`overflow-auto pr-3`} ref={provided.innerRef} {...provided.droppableProps}>
-              {buttons.map((button: any, index: any) => (
+              {buttons.map((button, index) => (
                 <Draggable
                   key={button.key}
                   draggableId={button.key}
@@ -117,6 +164,7 @@ export default function Menu(props: any) {
 
                         <p
                           className={`text-white text-xs font-bold ${selectedButton === button.key ? "text-blue-600" : ""}`}
+                          onClick={() => handleButtonClick(button.key, null)}
                         >
                           {button.Topic}
                         </p>
@@ -129,12 +177,12 @@ export default function Menu(props: any) {
                       </div>
 
                       <div className="flex flex-col my-2">
-                        {button.Children.map((child: any) => (
+                        {button.Children.map((child) => (
                           <Link key={child.key} href={`/docs/${child.value}`}>
                             <button
                               key={child.key}
                               className={`text-xs text-bold whitespace-nowrap text-left p-2 pl-4 border-l rounded-e-md hover:border-l-gray-600 ${selectedButton === button.key && selectedChild === child.key ? "text-blue-600 border-l-blue-600" : "text-gray-300"}`}
-                              onClick={() => handleButtonClick(child.value, child.key)}
+                              onClick={() => handleButtonClick(button.key, child.key)}
                             >
                               {child.value}
                             </button>
