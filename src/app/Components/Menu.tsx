@@ -3,66 +3,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { RxHamburgerMenu } from 'react-icons/rx'
 
-interface Button {
-  Topic: string;
-  Children: { key: string; value: string }[];
-  key: string;
-}
-
-const initialButtons: Button[] = [
-  {
-    Topic: "Getting Started",
-    key: "Introduction",
-    Children: [
-      { key: "1", value: "Installation" },
-      { key: "2", value: "Editor Setup" },
-      { key: "3", value: "Using with Preprocessors" },
-      { key: "4", value: "Optimizing for Production" },
-      { key: "5", value: "Browser Support" },
-      { key: "6", value: "Upgrade Guide" },
-    ],
-  },
-  {
-    Topic: "Core Concepts",
-    key: "Core Concepts",
-    Children: [
-      { key: "1", value: "Utility-First Fundamentals" },
-      { key: "2", value: "Handling Hover, Focus, and Other States" },
-      { key: "3", value: "Responsive Design" },
-      { key: "4", value: "Dark Mode" },
-      { key: "5", value: "Adding Custom Styles" },
-      { key: "6", value: "Functions & Directives" },
-    ],
-  },
-  {
-    Topic: "Customization",
-    key: "Customization",
-    Children: [
-      { key: "1", value: "Configuration" },
-      { key: "2", value: "Content" },
-      { key: "3", value: "Theme" },
-      { key: "4", value: "Screens" },
-      { key: "5", value: "Colors" },
-      { key: "6", value: "Spacing" },
-      { key: "7", value: "Plugins" },
-      { key: "8", value: "Presets" },
-    ],
-  },
-];
-
-interface Props {
-  params: {
-    buttons: any[];
-    selectedChildCallback: any;
-    selectedButton: string | null; // Add the selectedButton prop
-  };
-}
 
 export default function Menu(props: any) {
-  const { buttons: modifiedTopics, selectedChildCallback, selectedButton: parentSelectedButton } = props;
 
-  const [buttons, setButtons] = useState<Button[]>(initialButtons);
-  const [selectedButton, setSelectedButton] = useState<string | null>(parentSelectedButton);
+  const [buttons, setButtons] = useState(props.buttons);
+  const [selectedButton, setSelectedButton] = useState<string | null>('in');
   const [selectedChild, setSelectedChild] = useState<string | null>(null);
   const [isThemeDropdownOpen, setIsThemeDropdownOpen] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState("light");
@@ -147,7 +92,7 @@ export default function Menu(props: any) {
         <Droppable droppableId="buttons" isDropDisabled={!isEditing}>
           {(provided) => (
             <div className={`overflow-auto pr-3`} ref={provided.innerRef} {...provided.droppableProps}>
-              {buttons.map((button, index) => (
+              {buttons.map((button: any, index: any) => (
                 <Draggable
                   key={button.key}
                   draggableId={button.key}
@@ -161,7 +106,6 @@ export default function Menu(props: any) {
                       className={`flex flex-col my-3 ${snapshot.isDragging ? "opacity-50" : ""}`}
                     >
                       <div className="flex items-center justify-between">
-
                         <p
                           className={`text-white text-xs font-bold ${selectedButton === button.key ? "text-blue-600" : ""}`}
                           onClick={() => handleButtonClick(button.key, null)}
@@ -177,7 +121,7 @@ export default function Menu(props: any) {
                       </div>
 
                       <div className="flex flex-col my-2">
-                        {button.Children.map((child) => (
+                        {button.Children.map((child: any) => (
                           <Link key={child.key} href={`/docs/${child.value}`}>
                             <button
                               key={child.key}

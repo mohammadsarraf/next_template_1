@@ -1,22 +1,22 @@
 'use client'
 import React from "react";
 import Navbar from "./Components/Navbar";
-import Menu from "./Components/Menu";
-import Main from "./Components/Main";
-import Info from "./Components/Info";
+import ChildPage from "./Components/ChildPage";
+import jsonData from "../../data.json";
 
-export default function Home() {
+const modifiedTopics = jsonData.map((topic) => ({
+    ...topic,
+    Children: topic.Children.map(({ key, value, content }) => ({ key, value, content })),
+}));
+
+export default function Chats() {
     return (
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col h-screen ">
             <Navbar />
-            <div className="flex-grow flex min-h-screen">
-                <Menu />
-                <Main />
-                <Info />
-            </div>
-            <footer className="text-white p-4">Lilglu4e Productions</footer>
-
+            <ChildPage
+                topics={modifiedTopics}
+                content={`Welcome to HomePAGE!`}
+            />
         </div>
-
-    );
+    )
 }
