@@ -3,25 +3,24 @@
         "Topic": "Getting Started",
         "key": "Getting Started",
         "Children": [
-            { "key": "2", "value": "Editor Setup", "content": "yepppppp" },
-            { "key": "1", "value": "Installation", "content": "Yoooo this is actually working!" },
-            
-            { "key": "3", "value": "Using with Preprocessors", "content": "Hello3" },
-            { "key": "4", "value": "Optimizing for Production", "content": "Hello4" },
-            { "key": "5", "value": "Browser Support", "content": "Hello5" },
-            { "key": "6", "value": "Upgrade Guide", "content": "Hello6" }
+            { "key": "Installation", "value": "Installation", "content": " Yoooo this is actually working!" },
+            { "key": "Editor%20Setup", "value": "Editor Setup", "content": "yepppppp" },
+            { "key": "Using%20with%20Preprocessors", "value": "Using with Preprocessors", "content": "Hello3" },
+            { "key": "Optimizing%20for%20Production", "value": "Optimizing for Production", "content": "Hello4" },
+            { "key": "Browser%20Support", "value": "Browser Support", "content": "Hello5" },
+            { "key": "Upgrade%20Guide", "value": "Upgrade Guide", "content": "Hello6" }
         ]
     },
     {
         "Topic": "Core Concepts",
         "key": "Core Concepts",
         "Children": [
-            { "key": "1", "value": "Utility-First Fundamentals", "content": "Hello1" },
-            { "key": "2", "value": "Handling Hover, Focus, and Other States", "content": "Hello1" },
-            { "key": "3", "value": "Responsive Design", "content": "Hello1" },
-            { "key": "4", "value": "Dark Mode", "content": "Hello1" },
-            { "key": "5", "value": "Adding Custom Styles", "content": "Hello1" },
-            { "key": "6", "value": "Functions & Directives", "content": "Hello1" }
+            { "key": "Utility-First%20Fundamentals", "value": "Utility-First Fundamentals", "content": "Hello1" },
+            { "key": "Handling%20Hover%2C%20Focus%2C%20and%20Other%20States", "value": "Handling Hover, Focus, and Other States", "content": "Hello2" },
+            { "key": "Responsive%20Design", "value": "Responsive Design", "content": "Hello1" },
+            { "key": "Dark%20Mode", "value": "Dark Mode", "content": "Hello1" },
+            { "key": "Adding%20Custom%20Styles", "value": "Adding Custom Styles", "content": "Hello1" },
+            { "key": "Functions%20%26%20Directives", "value": "Functions & Directives", "content": "Hello1" }
         ]
     },
     {
