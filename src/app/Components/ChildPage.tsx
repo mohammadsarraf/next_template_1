@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Menu from "./Menu";
 import Main from "./Main";
 import jsonData from "../../../data.json"
+import Installation from "../Chats/Installation";
 
 
 
@@ -19,9 +20,10 @@ export default function ChildPage(props: any) {
 
         <div className="h-full flex overflow-y-hidden">
             <Menu buttons={props.topics}/>
-            <div className="text-white flex-grow px-10 py-11 max-h-full overflow-y-auto">
-                <h1>{props.content}</h1>
-            </div>
+            {/* <div className="text-white flex-grow px-10 py-11 max-h-full overflow-y-auto">
+                <p>{props.content}</p>
+            </div> */}
+            <Installation />
         </div>
     );
 }

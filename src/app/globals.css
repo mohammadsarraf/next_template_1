@@ -94,3 +94,8 @@ body {
 ::-webkit-scrollbar-button {
     display: none;
 }
+
+.counter::before {
+  content: counter(step);
+  /* Add any additional styling you need for your counter */
+}

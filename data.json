@@ -3,38 +3,119 @@
         "Topic": "Getting Started",
         "key": "Getting Started",
         "Children": [
-            { "key": "Installation", "value": "Installation", "content": " Yoooo this is actually working!" },
-            { "key": "Editor%20Setup", "value": "Editor Setup", "content": "yepppppp" },
-            { "key": "Using%20with%20Preprocessors", "value": "Using with Preprocessors", "content": "Hello3" },
-            { "key": "Optimizing%20for%20Production", "value": "Optimizing for Production", "content": "Hello4" },
-            { "key": "Browser%20Support", "value": "Browser Support", "content": "Hello5" },
-            { "key": "Upgrade%20Guide", "value": "Upgrade Guide", "content": "Hello6" }
+            {
+                "key": "Installation",
+                "value": "Installation",
+                
+                "content": "Get started with Tailwind CSS\n\nTailwind CSS works by scanning all of your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file.\n\nIt's fast, flexible, and reliable — with zero-runtime.\n\nInstallation\nTailwind CLI\nUsing PostCSS\nFramework Guides\nPlay CDN\nInstalling Tailwind CLI\nThe simplest and fastest way to get up and running with Tailwind CSS from scratch is with the Tailwind CLI tool. The CLI is also available as a standalone executable if you want to use it without installing Node.js.\n\nInstall Tailwind CSS"
+            },
+            {
+                "key": "Editor%20Setup",
+                "value": "Editor Setup",
+                "content": "yepppppp"
+            },
+            {
+                "key": "Using%20with%20Preprocessors",
+                "value": "Using with Preprocessors",
+                "content": "Hello3"
+            },
+            {
+                "key": "Optimizing%20for%20Production",
+                "value": "Optimizing for Production",
+                "content": "Hello4"
+            },
+            {
+                "key": "Browser%20Support",
+                "value": "Browser Support",
+                "content": "Hello5"
+            },
+            {
+                "key": "Upgrade%20Guide",
+                "value": "Upgrade Guide",
+                "content": "Hello6"
+            }
         ]
     },
     {
         "Topic": "Core Concepts",
         "key": "Core Concepts",
         "Children": [
-            { "key": "Utility-First%20Fundamentals", "value": "Utility-First Fundamentals", "content": "Hello1" },
-            { "key": "Handling%20Hover%2C%20Focus%2C%20and%20Other%20States", "value": "Handling Hover, Focus, and Other States", "content": "Hello2" },
-            { "key": "Responsive%20Design", "value": "Responsive Design", "content": "Hello1" },
-            { "key": "Dark%20Mode", "value": "Dark Mode", "content": "Hello1" },
-            { "key": "Adding%20Custom%20Styles", "value": "Adding Custom Styles", "content": "Hello1" },
-            { "key": "Functions%20%26%20Directives", "value": "Functions & Directives", "content": "Hello1" }
+            {
+                "key": "Utility-First%20Fundamentals",
+                "value": "Utility-First Fundamentals",
+                "content": "Hello1"
+            },
+            {
+                "key": "Handling%20Hover%2C%20Focus%2C%20and%20Other%20States",
+                "value": "Handling Hover, Focus, and Other States",
+                "content": "Hello2"
+            },
+            {
+                "key": "Responsive%20Design",
+                "value": "Responsive Design",
+                "content": "Hello1"
+            },
+            {
+                "key": "Dark%20Mode",
+                "value": "Dark Mode",
+                "content": "Hello1"
+            },
+            {
+                "key": "Adding%20Custom%20Styles",
+                "value": "Adding Custom Styles",
+                "content": "Hello1"
+            },
+            {
+                "key": "Functions%20%26%20Directives",
+                "value": "Functions & Directives",
+                "content": "Hello1"
+            }
         ]
     },
     {
         "Topic": "Customization",
         "key": "Customization",
         "Children": [
-            { "key": "1", "value": "Configuration", "content": "Hello1" },
-            { "key": "2", "value": "Content", "content": "Hello1" },
-            { "key": "3", "value": "Theme", "content": "Hello1" },
-            { "key": "4", "value": "Screens", "content": "Hello1" },
-            { "key": "5", "value": "Colors", "content": "Hello1" },
-            { "key": "6", "value": "Spacing", "content": "Hello1" },
-            { "key": "7", "value": "Plugins", "content": "Hello1" },
-            { "key": "8", "value": "Presets", "content": "Hello1" }
+            {
+                "key": "1",
+                "value": "Configuration",
+                "content": "Hello1"
+            },
+            {
+                "key": "2",
+                "value": "Content",
+                "content": "Hello1"
+            },
+            {
+                "key": "3",
+                "value": "Theme",
+                "content": "Hello1"
+            },
+            {
+                "key": "4",
+                "value": "Screens",
+                "content": "Hello1"
+            },
+            {
+                "key": "5",
+                "value": "Colors",
+                "content": "Hello1"
+            },
+            {
+                "key": "6",
+                "value": "Spacing",
+                "content": "Hello1"
+            },
+            {
+                "key": "7",
+                "value": "Plugins",
+                "content": "Hello1"
+            },
+            {
+                "key": "8",
+                "value": "Presets",
+                "content": "Hello1"
+            }
         ]
     }
 ]
